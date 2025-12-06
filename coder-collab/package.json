@@ -1,0 +1,17 @@
+{
+  "name": "coder-collab",
+  "version": "1.0.0",
+  "description": "Coder-collab is a platform for all the coders to build community, build teams, work on real projects and more",
+  "license": "ISC",
+  "author": "Devansh Prajapati",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.0"
+  }
+}

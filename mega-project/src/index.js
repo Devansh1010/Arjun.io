@@ -17,4 +17,3 @@ dbConnect()
         process.exit(1)
     })
 
-app.listen()

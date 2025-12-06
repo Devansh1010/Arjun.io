@@ -1,5 +1,5 @@
 import { asyncHandler } from './../utils/asyncHandler.js'
-import User from '../models/User.model.js'
+import {User} from '../models/User.model.js'
 import { ApiError } from '../utils/ApiErros.js'
 import { ApiResponse } from '../utils/ApiResponse.js'
 import jwt from 'jsonwebtoken'
@@ -55,8 +55,7 @@ export const logInUser = asyncHandler(async (req, res) => {
     }
 
     const user = await User.findOne({
-        username,
-        email: email
+        $or: [{ username }, { email }]
     })
 
     console.log("User in logIn User: ", user)

@@ -1,11 +1,12 @@
 import express from "express"
 
 // ? Router Imports
-import {} from './routes/HealthCheck.route.js'
-import { healthCheck } from "./controllers/HealthCheck.controller.js"
+import  healthCheckRouter  from "./routes/HealthCheck.route.js"
+import authRoute from './routes/Auth.route.js'
+
 const app = express()
 
-app.use('/api/v1/healthcheck', healthCheck)
-app.use('/api/v1/auth', auth)
+app.use('/api/v1/healthcheck', healthCheckRouter)
+app.use('/api/v1/auth', authRoute)
 
 export default app

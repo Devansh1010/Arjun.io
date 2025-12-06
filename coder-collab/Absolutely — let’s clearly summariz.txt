@@ -1,0 +1,79 @@
+Absolutely — let’s clearly summarize **everything we have locked in so far** before moving forward.
+
+---
+
+# ✅ Finalized Decisions So Far
+
+## 🎯 Core Vision
+
+> **A gamified collaboration platform for coders to build real projects, find teammates, stay motivated, and eventually get hired — all based on proof-of-work.**
+
+---
+
+## ✅ Core User Features (Phase 1 “Must-Haves”)
+
+| Feature                                                                      | Status   |
+| ---------------------------------------------------------------------------- | -------- |
+| Create Project / Team Spaces                                                 | ✅ Locked |
+| Join Projects as Contributor                                                 | ✅ Locked |
+| Role Assignment & Task Management (Simple “Daily Standup + Task List” style) | ✅ Locked |
+| Gamification System (XP, Levels, Badges, RPG Avatars & Titles)               | ✅ Locked |
+| Public Profiles with Contribution History                                    | ✅ Locked |
+| Leaderboards for Motivation                                                  | ✅ Locked |
+
+---
+
+## ✅ Collaboration & Gamification Style
+
+| Decision Point      | Locked Choice                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------ |
+| Collaboration Style | **Option 2 → Minimal “Daily Standup + Task List”** (Slack-like structure with Kanban-lite) |
+| Gamification Mode   | **Full RPG Style** → XP, Levels, Streaks, Skins, Titles, Achievements                      |
+
+---
+
+## ✅ Monetization Strategy
+
+| Revenue Stream                                                                      | Primary / Secondary        | Notes                          |
+| ----------------------------------------------------------------------------------- | -------------------------- | ------------------------------ |
+| **Recruiter / Company Access** (Talent Search, Contact, Filters, Hiring Challenges) | **Primary Revenue Source** | Main income driver             |
+| **AI Productivity Tools** (Code summarizing, sprint insights, task automation)      | Secondary (Paid Add-on)    | Optional for developers        |
+| **Project Boost / Featured Spotlight**                                              | Secondary                  | Paid promotion for founders    |
+| **Cosmetic Add-ons (Avatar Skins, Titles, Themes)**                                 | Secondary                  | Purely optional, no pay-to-win |
+
+---
+
+## ✅ Recruiter Plan Model (Finalized)
+
+| Feature / Capability         | Free Plan   | **Basic Recruiter** | **Pro Recruiter**             |
+| ---------------------------- | ----------- | ------------------- | ----------------------------- |
+| View Profiles & Leaderboards | ✅           | ✅                   | ✅                             |
+| Send Contact Invites         | ❌ (1/month) | ✅ 20/month          | ✅ Unlimited                   |
+| Talent Filtering             | ❌           | ✅ Basic             | ✅ AI-Powered Advanced Filters |
+| Contribution Analytics       | ❌           | ✅ Limited           | ✅ Full Insights               |
+| Download CVs / Reports       | ❌           | ✅ Limited           | ✅ Unlimited                   |
+| Post Job Listings            | ❌           | ✅ 1/month           | ✅ Unlimited + Featured        |
+| Host Challenges              | ❌           | ❌                   | ✅ Yes                         |
+| Company Branding & API       | ❌           | ❌                   | ✅ Yes                         |
+
+✅ **Locked.**
+
+---
+
+# ✅ Pending Final Decision (Before Roadmap Creation)
+
+👉 **When do we introduce Recruiters into the ecosystem?**
+
+Please choose one:
+
+| Option                                         | Recruiter Rollout Strategy                         | Pros                   | Cons                             |
+| ---------------------------------------------- | -------------------------------------------------- | ---------------------- | -------------------------------- |
+| **A) Phase 1 (Day 1)**                         | Launch with Recruiters from Start                  | Early revenue          | Low coder base = poor experience |
+| **B) Phase 2 (After Coder Traction)**          | Launch Recruiter features once community is active | Better results & value | Slight revenue delay             |
+| **C) Phase 3 (Only when Platform is Buzzing)** | Recruiters come last                               | Strong social proof    | Delays monetization              |
+
+---
+
+### Just reply:
+
+**A / B / C — and then I’ll lock it and generate the Full Phase Roadmap.**
