@@ -2,32 +2,32 @@
 import DashboardCard from '@/components/DashboardCard'
 
 import { Button } from '@/components/ui/button'
+import axios from 'axios'
 import { Moon, Sun, User } from 'lucide-react'
-import { title } from 'process'
+import { useTheme } from 'next-themes'
+
 import { useState } from 'react'
 import { toast } from "sonner"
+
 const page = () => {
-    const [theme, setTheme] = useState(true)
+    const { theme, setTheme } = useTheme()
+
     return (
         <div className='w-full px-10 py-6'>
-            <div className='w-full flex justify-between'>
+            <div className='w-full flex justify-between p-8 mb-6'>
                 <div>
-                    <h1 className="text-3xl font-bold ">
+                    <h1 className="text-2xl font-semibold ">
                         Admin Dashboard
                     </h1>
-                    <p className="text-gray-600">
-                        Monitor performance, insights, and system activity at a glance
-                    </p>
+
                 </div>
 
-                <div className="flex gap-3">
-                  
+                <div className="flex gap-3 ">
+
                     <Button
-                        variant="ghost"
-                        className="hover:bg-gray-100"
-                        onClick={() => setTheme((prev) => !prev)}
+                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                     >
-                        {theme ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-blue-500" />}
+                        {theme === "light" ? <Moon /> : <Sun />}
                     </Button>
                 </div>
 
