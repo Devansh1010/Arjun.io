@@ -2,12 +2,9 @@
 import DashboardCard from '@/components/DashboardCard'
 
 import { Button } from '@/components/ui/button'
-import axios from 'axios'
 import { Moon, Sun, User } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-import { useState } from 'react'
-import { toast } from "sonner"
 
 const page = () => {
     const { theme, setTheme } = useTheme()
