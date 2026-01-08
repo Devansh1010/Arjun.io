@@ -1,0 +1,133 @@
+import { Schema, model, models } from 'mongoose'
+import { UserRole } from './user.model'
+
+export interface IMembers {
+  _id?: Schema.Types.ObjectId
+  userId: Schema.Types.ObjectId
+  username: string
+  userRole: UserRole
+  joinedAt: Date
+  leftAt: Date | null
+}
+
+export interface IAccessTo {
+  _id?: Schema.Types.ObjectId
+  userId: Schema.Types.ObjectId
+  username: string
+  userRole: UserRole
+  joinedAt: Date
+}
+
+export interface IInvitedUser {
+  userId: Schema.Types.ObjectId
+  username: string
+}
+
+export interface IRequestedUser {
+  userId: Schema.Types.ObjectId
+  username: string
+  msg: string
+  isAccept: boolean
+}
+
+export interface IGroup {
+  _id?: Schema.Types.ObjectId
+  name: string
+  desc: string
+  techStack: string[]
+  imageUrl: string
+  members: IMembers[]
+  accessTo: IAccessTo[]
+  invitedUsers: IInvitedUser[]
+  requestedUser: IRequestedUser[]
+  createdAt?: Date | undefined
+}
+
+const groupSchema = new Schema<IGroup>(
+  {
+    name: {
+      type: String,
+      min: [2, 'Minimum 2 Character required in Group Name'],
+      required: [true, 'Username Required'],
+    },
+
+    desc: {
+      type: String,
+    },
+
+    techStack: {
+      type: [String],
+      required: [true, 'techStack is Required'],
+    },
+
+    imageUrl: {
+      type: String,
+      default: '',
+    },
+
+    members: [
+      {
+        userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        username: {
+          type: String,
+          required: true,
+        },
+        userRole: { type: String, enum: Object.values(UserRole), required: true },
+        joinedAt: { type: Date, default: Date.now },
+        leftAt: { type: Date, default: null },
+      },
+    ],
+
+    accessTo: [
+      {
+        userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        username: {
+          type: String,
+          required: true,
+        },
+        userRole: { type: String, enum: Object.values(UserRole), required: true },
+        joinedAt: { type: Date, required: true },
+      },
+    ],
+
+    invitedUsers: [
+      {
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+        },
+        username: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+
+    requestedUser: [
+      {
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+          reqired: true,
+        },
+
+        username: {
+          type: String,
+          required: true,
+        },
+        msg: {
+          type: String,
+        },
+        isAccept: {
+          type: Boolean,
+          default: false,
+        },
+      },
+    ],
+  },
+  { timestamps: true }
+)
+
+const Group = models.Group || model<IGroup>('Group', groupSchema)
+
+export default Group

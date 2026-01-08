@@ -42,6 +42,12 @@ export const registerUser = asyncHandler(async (req, res) => {
     if (!userCreated) throw new ApiError(504, "Something went worng while creating user")
 
     //user created response
+    res.status(201).json(new ApiResponse(201, "User created successfully", {
+        id: userCreated._id,
+        username: userCreated.username,
+        email: userCreated.email,
+        fullName: userCreated.fullName,
+    }))
 
     //send email for verification
 
