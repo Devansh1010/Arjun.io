@@ -45,14 +45,12 @@ const userSchema = Schema({
         required: true,
     },
 
+    accessToken: {
+        type: String,
+    },
+
     refreshToken: {
         type: String,
-    },
-    resetToken: {
-        type: String,
-    },
-    resetTokenExpiry: {
-        type: Date,
     },
     emailVerificationToken: {
         type: String,
@@ -62,7 +60,6 @@ const userSchema = Schema({
     },
     forgotPasswordToken: {
         type: String,
-
     },
     forgotPasswordTokenExpiry: {
         type: Date,
@@ -91,6 +88,7 @@ userSchema.methods.generateAccessToken = function () {
         { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
     )
 }
+
 userSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         {
@@ -109,5 +107,6 @@ userSchema.methods.generateTemporyToken =  function () {
 
     return {hashedToken, unHashToken, tokenExpiry}
 }
+
 
 export const User = mongoose.model("User", userSchema)

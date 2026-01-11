@@ -27,6 +27,7 @@ export const getNotes = asyncHandler(async (req, res) => {
         .status(200)
         .json(new ApiResponse(200, notes, "Notes found successfully"))
 })
+
 export const getNoteById = asyncHandler(async (req, res) => {
     const { noteId } = await req.params
 
@@ -68,6 +69,7 @@ export const createNote = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, populatedNote, "Note created successfully"))
 
 })
+
 export const updateNote = asyncHandler(async (req, res) => {
     const { noteId } = await req.params
     const { content } = await req.body
@@ -89,6 +91,7 @@ export const updateNote = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, updatedNote, "Note updated successfully"))
 
 })
+
 export const deleteNote = asyncHandler(async (req, res) => {
     const { noteId } = await req.params
     const note = await Note.findaById(noteId)

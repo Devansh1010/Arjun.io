@@ -1,6 +1,6 @@
 import express from "express"
 
-// ? Router Imports
+// Router Imports
 import  healthCheckRouter  from "./routes/HealthCheck.route.js"
 import authRoute from './routes/Auth.route.js'
 

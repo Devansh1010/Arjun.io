@@ -1,12 +1,12 @@
 import Mailgen from 'mailgen'
 import nodemailer from 'nodemailer'
 
-const sendMail = async (options) => {
+export const sendMail = async (options) => {
     const mailGenerator = new Mailgen({
         theme: 'default',
         product: {
             // Appears in header & footer of e-mails
-            name: 'Mailgen',
+            name: 'Arjun.io',
             link: 'https://mailgen.js/'
             // Optional product logo
             // logo: 'https://mailgen.js/img/logo.png'
@@ -38,9 +38,10 @@ const sendMail = async (options) => {
     }
 
     try {
-        await transporter.sendMail(mail)
+        const result = await transporter.sendMail(mail)
+        console.log("Mail Sent Successfully", result)
     } catch (error) {
-        console.log("Error Sending Mail")
+        console.log("Error Sending Mail", error)
     }
 }
 
@@ -48,15 +49,34 @@ export const emailVerificationMailGenContent = (username, verifiactionUrl) => {
     return {
         body: {
             name: username,
-            intro: 'Welcome to Task Manager! We\'re very excited to have you on board.',
+            intro: 'Welcome to Arjun.io! We\'re very excited to have you on board.',
             action: {
-                instructions: 'To get started with Task Manager, please verify your account:',
+                instructions: 'To get started with Arjun.io, please verify your account:',
                 button: {
                     color: '#22BC66', // Optional action button color
                     text: 'Confirm your account',
                     link: verifiactionUrl
                 }
             },
+            outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
+        }
+    }
+}
+
+export const forgotPasswordMailGenContent = (username, resetUrl) => {
+    return {
+        body: {
+            name: username,
+            intro: 'You have requested to reset your password. Please click the button below to reset your password.',
+            action: {
+                instructions: 'To reset your password, please click the button below:',
+                button: {
+                    color: '#FF0000', 
+                    text: 'Reset your password',
+                    link: resetUrl
+                }
+            },
+            
             outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
         }
     }
