@@ -106,6 +106,42 @@ export const logInUser = asyncHandler(async (req, res) => {
         })
 })
 
+export const logOutUser = asyncHandler(async (req, res) => {
+
+    const { email } = req.body
+
+    if (!email) {
+        throw new ApiError(403, "Fields are missing")
+    }
+
+    const user = await User.findOne({
+        email
+    })
+
+    if (!user) {
+        throw new ApiError(405, "User not found")
+    }
+
+    user.accessToken = undefined
+    user.refreshToken = undefined
+
+    await user.save({ validateBeforeSave: false })
+
+    const options = {
+        httpOnly: true,
+        secure: true
+    }
+
+    return res
+        .status(200)
+        .clearCookie("accessToken", options)
+        .clearCookie("refreshToken", options)
+        .json({
+            success: true,
+            message: "User logged out successfully"
+        })
+})
+
 export const forgotPassword = asyncHandler(async (req, res) => {
 
     const { email } = req.body
@@ -193,42 +229,6 @@ export const verifyEmailVarificationCode = asyncHandler(async (req, res) => {
 
 })
 
-export const logOutUser = asyncHandler(async (req, res) => {
-
-    const { email } = req.body
-
-    if (!email) {
-        throw new ApiError(403, "Fields are missing")
-    }
-
-    const user = await User.findOne({
-        email
-    })
-
-    if (!user) {
-        throw new ApiError(405, "User not found")
-    }
-
-    user.accessToken = undefined
-    user.refreshToken = undefined
-
-    await user.save({ validateBeforeSave: false })
-
-    const options = {
-        httpOnly: true,
-        secure: true
-    }
-
-    return res
-        .status(200)
-        .clearCookie("accessToken", options)
-        .clearCookie("refreshToken", options)
-        .json({
-            success: true,
-            message: "User logged out successfully"
-        })
-})
-
 export const getUserProfile = asyncHandler(async (req, res) => {
 
     const userId = req.user.id;
@@ -237,6 +237,6 @@ export const getUserProfile = asyncHandler(async (req, res) => {
     if (!user) {
         throw new ApiError(404, "User not found");
     }
-    
+
     res.status(200).json(new ApiResponse(200, "User profile fetched successfully", user));
 });
