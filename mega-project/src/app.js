@@ -3,10 +3,16 @@ import express from "express"
 // Router Imports
 import  healthCheckRouter  from "./routes/HealthCheck.route.js"
 import authRoute from './routes/Auth.route.js'
+import projectRoute from './routes/Project.route.js'
 
 const app = express()
+app.use(express.json())
 
-app.use('/api/v1/healthcheck', healthCheckRouter)
-app.use('/api/v1/auth', authRoute)
+// Routes
+const baseApiUrl = process.env.BASE_API_URL || '/api/v1'
+app.use(`${baseApiUrl}/healthcheck`, healthCheckRouter)
+app.use(`${baseApiUrl}/auth`, authRoute)
+app.use(`${baseApiUrl}/projects`, projectRoute)
+
 
 export default app
