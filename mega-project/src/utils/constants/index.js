@@ -6,9 +6,6 @@ export const UserRoleEnum = {
 
 export const AvailableUserRoles = Object.values(UserRoleEnum)
 
-// ? testing the results of available user roles
-console.log(AvailableUserRoles);
-
 export const TaskStatusEnum = {
     TODO: "todo",
     IN_PROGRESS: "in_progress",
@@ -17,5 +14,3 @@ export const TaskStatusEnum = {
 
 export const TaskStatus = Object.values(TaskStatusEnum)
 
-// ? testing the results of Task Status
-console.log(TaskStatus);
