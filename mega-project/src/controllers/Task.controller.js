@@ -26,6 +26,7 @@ export const getTasks = asyncHandler(async (req, res) => {
         .status(200)
         .json(new ApiResponse(200, tasks, "Tasks found successfully"))
 })
+
 export const getTaskById = asyncHandler(async (req, res) => {
     const { taskId } = await req.params
 
@@ -72,6 +73,7 @@ export const createTask = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, populatedTask, "Task created successfully"))
 
 })
+
 export const updateTask = asyncHandler(async (req, res) => {
     const { taskId } = await req.params
     const { title, description, assignedTo, status, attachments } = await req.body
@@ -93,6 +95,7 @@ export const updateTask = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, updatedTask, "Task updated successfully"))
 
 })
+
 export const deleteTask = asyncHandler(async (req, res) => {
     const { taskId } = await req.params
     const task = await Task.findaById(noteId)
