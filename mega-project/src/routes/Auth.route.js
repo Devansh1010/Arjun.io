@@ -4,14 +4,21 @@ import { validate } from '../middleware/validator.middleware.js'
 import { userRegistrationValidator } from '../utils/validators/index.js'
 import { authenticateUser } from "../middleware/authentication-check.middleware.js";
 
-const router = Router()
+const router = Router();
 
-router.route('/register').post(userRegistrationValidator(), validate, registerUser)
-router.route('/verify-email').post(verifyEmailVarificationCode)
-router.route('/login').post(logInUser)
-router.route('/forgot-password').post(forgotPassword)
-router.route('/reset-password').post(authenticateUser, resetPassword)
-router.route('/logout').post(authenticateUser, logOutUser)
-router.route('/get-user-profile').post(authenticateUser, getUserProfile)
+console.log("TESTING:", typeof userRegistrationValidator, typeof validate, typeof registerUser, typeof logInUser);
 
-export default router
+// Public Routes
+router.route('/register').post(userRegistrationValidator(), validate, registerUser);
+router.route('/login').post(logInUser);
+router.route('/forgot-password').post(forgotPassword);
+router.route('/verify-email').post(verifyEmailVarificationCode);
+
+// Protected Routes (Require Authentication)
+router.route('/logout').post(authenticateUser, logOutUser);
+router.route('/reset-password').post(authenticateUser, resetPassword);
+
+// Changed to GET for RESTful compliance
+router.route('/profile').get(authenticateUser, getUserProfile);
+
+export default router;
