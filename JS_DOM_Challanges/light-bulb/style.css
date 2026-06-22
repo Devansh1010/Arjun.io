@@ -1,0 +1,84 @@
+/* Base Styles */
+html {
+    background-color: #1e1c1c;
+}
+.items {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bulb-container {
+    width: 300px;  /* Set exact screen width here */
+    height: 300px; /* Set exact screen height here */
+    display: flex;
+    flex-direction: column;
+  }
+
+.bulb-glass {
+    fill: #E0E0E0;
+    /* Default cold grey */
+    transition: fill 0.3s ease;
+}
+
+.bulb-glow {
+    fill: yellow;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    filter: blur(5px);
+}
+
+/* "On" State Styles triggered by a parent class */
+svg.on .bulb-glass {
+    fill: #FFD700;
+    /* Vibrant Gold/Yellow */
+}
+
+svg.on .bulb-glow {
+    opacity: 0.4;
+}
+
+/* Base Button Styling (Off / Default State) */
+#bulb-toggle {
+  all: unset; /* Strips default browser button inconsistencies */
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Dimensions & Typography */
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  
+  /* Monochromatic Aesthetic */
+  background-color: #000000;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  
+  /* Smooth UI interaction feedback */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+/* Hover State */
+#bulb-toggle:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Active State (The instant the click happens) */
+#bulb-toggle:active {
+  transform: scale(0.96); /* Micro-interaction feedback */
+}
+
+/* Keyboard Navigation / Accessibility Focus State */
+#bulb-toggle:focus-visible {
+  outline: 2px solid #FFD700; /* Gold ring matching the light bulb glow */
+  outline-offset: 3px;
+}

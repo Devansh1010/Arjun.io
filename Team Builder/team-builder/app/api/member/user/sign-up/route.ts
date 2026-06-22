@@ -5,6 +5,7 @@ import User from '@/models/user_models/user.model'
 import UserData from '@/models/allUsers.model'
 import { createResponse, StatusCode } from '@/lib/createResponce'
 import { sendVerification } from '@/helpers/sendVerificationEmail'
+import Subscription from '@/models/payment_models/subscription.model'
 
 export async function POST(request: Request) {
   await dbConnect()
@@ -106,6 +107,12 @@ export async function POST(request: Request) {
       userDoc = userDoc[0]
 
       await UserData.findOneAndUpdate({ email: validatedEmail }, { username: validatedUsername })
+
+      await Subscription.create({
+        user: userDoc._id,
+        plan: "FREE",
+        status: "ACTIVE",
+      });
     }
 
     // SEND VERIFICATION EMAIL

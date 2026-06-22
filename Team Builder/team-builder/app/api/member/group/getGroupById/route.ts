@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
     await dbConnect()
 
     if (groupId) {
-      const group = await Group.findById(groupId)
+      const group = await Group.findById(groupId).lean()
 
       if (!group) {
         return createResponse(
@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
         StatusCode.OK
       )
     } else {
-      const user = await User.findById(data.id).select('groups')
+      const user = await User.findById(data.id).select('groups').lean()
 
       const userGroups = user?.groups || []
 
@@ -56,6 +56,8 @@ export async function GET(req: NextRequest) {
         )
       }
 
+      console.log(userGroups)
+
       // extract groupIds
       const groupIds = userGroups.map((g: any) => g.groupId)
 
@@ -63,8 +65,6 @@ export async function GET(req: NextRequest) {
       const allGroups = await Group.find({
         _id: { $in: groupIds },
       })
-
-      console.log(allGroups)
 
       return createResponse(
         {

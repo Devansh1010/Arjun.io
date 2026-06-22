@@ -231,6 +231,7 @@ export const verifyEmailVarificationCode = asyncHandler(async (req, res) => {
 
 export const getUserProfile = asyncHandler(async (req, res) => {
 
+    console.log("Inside getUserProfile controller, req.user:", req.user);
     const userId = req.user.id;
     const user = await User.findById(userId).select("-password -refreshToken");
 

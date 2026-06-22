@@ -44,12 +44,14 @@ const userSchema = new Schema<IUser>(
       min: [2, 'Minimum 2 Character required in Username'],
       required: [true, 'Username Required'],
       unique: true,
+      index: true
     },
 
     email: {
       type: String,
       required: [true, 'Email Required'],
       unique: true,
+      index: true
     },
 
     password: {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Bulb</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="items">
+        <div class="bulb-container">
+            <svg id="light-bulb" viewBox="0 0 100 100" class="off">
+                <circle cx="50" cy="45" r="35" class="bulb-glow" />
+
+                <circle cx="50" cy="45" r="25" class="bulb-glass" />
+
+                <path d="M42 68 H58 V76 H42 Z" class="bulb-base" />
+            </svg>
+
+            <button id="bulb-toggle">Toggle</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

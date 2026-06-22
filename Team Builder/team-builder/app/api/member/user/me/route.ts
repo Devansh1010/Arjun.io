@@ -38,7 +38,6 @@ export async function GET(req: NextRequest) {
 
     const userInfo = await User.findOne({ _id: userId }).select('-password')
 
-    console.log(userInfo)
     if (!userInfo)
       return createResponse(
         {

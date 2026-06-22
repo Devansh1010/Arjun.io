@@ -90,10 +90,10 @@ export default function TaskList({ group }: { group: IGroup }) {
         columns={columns}
         data={groupTasks}
         meta={{
-          groupId: group._id,
+          groupId: group?._id,
           updateTask: updateTaskMutation,
           group: group,
-          activeUserId: activeUser._id,
+          activeUserId: activeUser?._id,
           isLeader
         }}
       />

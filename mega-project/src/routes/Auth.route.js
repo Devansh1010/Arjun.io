@@ -6,8 +6,6 @@ import { authenticateUser } from "../middleware/authentication-check.middleware.
 
 const router = Router();
 
-console.log("TESTING:", typeof userRegistrationValidator, typeof validate, typeof registerUser, typeof logInUser);
-
 // Public Routes
 router.route('/register').post(userRegistrationValidator(), validate, registerUser);
 router.route('/login').post(logInUser);
